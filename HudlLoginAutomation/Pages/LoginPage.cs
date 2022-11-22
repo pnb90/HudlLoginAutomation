@@ -1,12 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace HudlLoginAutomation.Pages
 {
-    internal class LoginPage
+    internal class LoginPage : BasePage
     {
+        /* Web Elements */
+        /*
+        IWebElement emailInput = driver.FindElement(By.Id("email"));
+        IWebElement passwordInput = driver.FindElement(By.Id("password"));
+        IWebElement loginButton = driver.FindElement(By.Id("logIn"));
+        IWebElement rememberMeCheckbox = driver.FindElement(By.Id("uniId_2"));
+        IWebElement needHelpLink = driver.FindElement(By.CssSelector("a[data-qa-id='need-help-link']"));
+        IWebElement signUpLink = driver.FindElement(By.CssSelector("a[href='/register/signup']"));
+        IWebElement organizationLogInButton = driver.FindElement(By.CssSelector("button[data-qa-id='log-in-with-organization-btn']"));
+        */
+
+        public LoginPage(IWebDriver driver) : base(driver)
+        {
+            this.driver = driver;
+        }
     }
 }
