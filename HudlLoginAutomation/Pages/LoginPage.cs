@@ -1,7 +1,4 @@
-﻿using System;
-using System.Configuration;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
 
 namespace HudlLoginAutomation.Pages
 {
@@ -21,10 +18,10 @@ namespace HudlLoginAutomation.Pages
             this.driver = driver;
         }
 
-        public void SignIn()
+        public void SignIn(String email, String password)
         {
-            EnterText(emailInput, "someEmail");
-            EnterText(passwordInput, "somePassword");
+            EnterText(emailInput, email);
+            EnterText(passwordInput, password);
             loginButton.Click();
         }
     }
