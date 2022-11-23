@@ -11,11 +11,13 @@ namespace HudlLoginAutomation.Tests
         IWebDriver driver;
         String email = TestContext.Parameters.Get("email");
         String password = TestContext.Parameters.Get("password");
+        String baseUrl = TestContext.Parameters.Get("baseUrl");
         #endregion
 
         #region Constructor
         public LoginTests()
         {
+            LoginPage loginPage = new LoginPage(driver);
         }
         #endregion
 
@@ -33,11 +35,25 @@ namespace HudlLoginAutomation.Tests
 
         #region Tests
         [Test]
+        public void NavigateToLogin()
+        {
+            HomePage homePage = new HomePage(driver);
+
+            homePage.NavigateToPage();
+            homePage.ClickLogin();
+
+            Assert.That(driver.Url, Is.EqualTo("https://www.hudl.com/login"));
+        }
+
+        [Test]
         public void ValidEmailAndPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
+
             loginPage.SignIn(email, password);
-            Assert.IsTrue(true);
+            loginPage.WaitForNewPageLoad(driver.Url);
+
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
         }
 
         /* No valid organization login for happy path testing 
@@ -53,43 +69,52 @@ namespace HudlLoginAutomation.Tests
         public void InvalidEmail()
         {
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.SignIn(email, password);
-            Assert.IsTrue(true);
+
+            loginPage.SignIn("invalidEmail", password);
+
+            Assert.IsFalse(loginPage.isLoginValid());
         }
 
+        [Test]
         public void InvalidPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.SignIn(email, password);
-            Assert.IsTrue(true);
+
+            loginPage.SignIn(email, "invalidPassword");
+
+            Assert.IsFalse(loginPage.isLoginValid());
+        }
+
+        [Test]
+        [Category("API")]
+        public void NullEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.SignIn("", password);
+
+            Assert.IsFalse(loginPage.isLoginValid());
+        }
+
+        [Test]
+        [Category("API")]
+        public void NullPassword()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.SignIn(email, "");
+
+            Assert.IsFalse(loginPage.isLoginValid());
         }
 
         public void ResetPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
+
             loginPage.SignIn(email, password);
+
             Assert.IsTrue(true);
         }
-
-
-        /* Test Cases for API Testing
-         
-        public void NullEmail()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.SignIn(email, password);
-            Assert.IsTrue(true);
-        }
-
-        public void NullPassword()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.SignIn(email, password);
-            Assert.IsTrue(true);
-        }
-
-        */
-
 
         #endregion
 
