@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace HudlLoginAutomation.Pages
 {
@@ -28,7 +29,61 @@ namespace HudlLoginAutomation.Pages
             EnterText(passwordInput, password);
             loginButton.Click();
         }
+
+        public bool IsLoginValid()
+        {
+            bool loginValidity = false;
+
+            try
+            {
+
+                if (IsLoginButtonEnabled() && !IsErrorDisplayed())
+                {
+                    loginValidity = true;
+                }
+                else if (!IsLoginButtonEnabled() && IsErrorDisplayed())
+                {
+                    loginValidity = false;
+                }
+                else
+                {
+                    throw new Exception("Login is not quite right.");
+                }
+
+            } catch (Exception ex)
+            {
+                //Would generally log a message to a report.
+
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("IsLoginButtonEnabled " + IsLoginButtonEnabled());
+                Console.WriteLine("IsErrorDisplayed " + IsErrorDisplayed());
+
+            }
+
+            return loginValidity;
+        }
+
+
+        public void NavigateToPage()
+        {
+            driver.Navigate().GoToUrl(baseUrl + "/login");
+        }
+
         #endregion
 
+        private bool IsLoginButtonEnabled()
+        {
+            return loginButton.Enabled;
+        }
+
+        private bool IsErrorDisplayed()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            wait.Until(x => GetElementCount("CssSelector", "p[data-qa-id='error-display']") > 0);
+
+            IWebElement errorDisplay = driver.FindElement(By.CssSelector("p[data-qa-id='error-display']"));
+
+            return errorDisplay.Displayed;
+        }
     }
 }
