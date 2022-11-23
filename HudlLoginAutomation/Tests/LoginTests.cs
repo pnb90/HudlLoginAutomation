@@ -42,6 +42,26 @@ namespace HudlLoginAutomation.Tests
         #region Tests
 
         [Test]
+        public void InvalidEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.SignIn("invalidEmail", password);
+
+            Assert.IsFalse(loginPage.IsLoginValid());
+        }
+
+        [Test]
+        public void InvalidPassword()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.SignIn(email, "invalidPassword");
+
+            Assert.IsFalse(loginPage.IsLoginValid());
+        }
+
+        [Test]
         public void NavigateToLogin()
         {
             HomePage homePage = new HomePage(driver);
@@ -63,66 +83,28 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void ValidEmailAndPassword()
+        public void NavigateToPasswordReset()
         {
             LoginPage loginPage = new LoginPage(driver);
 
-            loginPage.SignIn(email, password);
-            loginPage.WaitForNewPageLoad(driver.Url);
+            loginPage.ClickNeedHelpButton();
 
-            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/login/help#"));
         }
-
-
-        /*
-        public void ValidOrganizationLogin()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.OrganizationalSignIn(email);
-            Assert.IsTrue(true);
-        }
-        */
 
         [Test]
-        public void InvalidEmail()
+        public void NavigateToPasswordResetInvalidEmail()
         {
             LoginPage loginPage = new LoginPage(driver);
 
             loginPage.SignIn("invalidEmail", password);
 
-            Assert.IsFalse(loginPage.IsLoginValid());
-        }
+            Assert.False(loginPage.IsLoginValid());
 
-        [Test]
-        public void InvalidPassword()
-        {
-            LoginPage loginPage = new LoginPage(driver);
+            loginPage.ClickNeedHelpInvalidEmailButton();
 
-            loginPage.SignIn(email, "invalidPassword");
-
-            Assert.IsFalse(loginPage.IsLoginValid());
-        }
-
-        [Test]
-        [Category("API")]
-        public void NullEmail()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-
-            loginPage.SignIn("", password);
-
-            Assert.IsFalse(loginPage.IsLoginValid());
-        }
-
-        [Test]
-        [Category("API")]
-        public void NullPassword()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-
-            loginPage.SignIn(email, "");
-
-            Assert.IsFalse(loginPage.IsLoginValid());
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/login/help"));
+            Assert.That(loginPage.GetEmailText(), Is.EqualTo("invalidEmail"));
         }
 
         [Test]
@@ -134,14 +116,72 @@ namespace HudlLoginAutomation.Tests
 
             Assert.That(driver.Url, Is.EqualTo(baseUrl + "/register/signup"));
         }
-        public void ResetPassword()
+
+        [Test]
+        public void NullEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.SignIn("", password);
+
+            Assert.IsFalse(loginPage.IsLoginValid());
+        }
+
+        [Test]
+        public void NullPassword()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.SignIn(email, "");
+
+            Assert.IsFalse(loginPage.IsLoginValid());
+        }
+
+        [Test]
+        public void ValidEmailAndPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
 
             loginPage.SignIn(email, password);
+            loginPage.WaitForNewPageLoad(driver.Url);
 
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
+        }
+
+        /* Reset Email Tests 
+        [Test]
+        public void UserAbleToResetPasswordWithValidEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.ClickNeedHelpButton();
+            loginPage.ResetPassword("anything@test.com");
+
+            Assert.isTrue(loginPage.IsConfirmationTextPresent());
+            
+            // better yet is checking the API has been hit to send out a password reset email.
+        }
+
+        [Test]
+        public void UserNotAbleToResetPasswordWithInvalidEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.ClickNeedHelpButton();
+            loginPage.ResetPassword("invalid");
+
+            Assert.isTrue(loginPage.IsPasswordResetErrorDisplayPresent());
+        }
+        */
+
+        /* Would need tests for organizational login but no valid test data at the moment
+
+        public void ValidOrganizationLogin()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.OrganizationalSignIn(email);
             Assert.IsTrue(true);
         }
+
+        */
 
         #endregion
 

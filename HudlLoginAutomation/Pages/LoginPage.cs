@@ -15,8 +15,10 @@ namespace HudlLoginAutomation.Pages
         IWebElement signUpLink => driver.FindElement(By.CssSelector("a[href='/register/signup']"));
         IWebElement organizationLogInButton => driver.FindElement(By.CssSelector("button[data-qa-id='log-in-with-organization-btn']"));
         IWebElement errorDisplay => driver.FindElement(By.CssSelector("p[data-qa-id='error-display']"));
+        IWebElement errorDisplayNeedHelpLink => errorDisplay.FindElement(By.CssSelector("a"));
         IWebElement organizationalEmailInput => driver.FindElement(By.Id("uniId_1"));
-        
+        IWebElement passwordResetEmailInput => driver.FindElement(By.CssSelector("input[data-qa-id='password-reset-input']"));
+        IWebElement passwordResetButton => driver.FindElement(By.CssSelector("button[data-qa-id='password-reset-submit-btn']"));
         #endregion
 
         #region Constructor
@@ -25,21 +27,34 @@ namespace HudlLoginAutomation.Pages
         {
             this.driver = driver;
         }
-        
+
         #endregion
 
         #region Public Methods 
 
-        public void SignIn(String email, String password)
+        public void ClickNeedHelpButton()
         {
-            EnterText(emailInput, email);
-            EnterText(passwordInput, password);
-            loginButton.Click();
+            needHelpLink.Click();
+        }
+
+        public void ClickNeedHelpInvalidEmailButton()
+        {
+            errorDisplayNeedHelpLink.Click();
         }
 
         public void ClickOrganizationLogInButton()
         {
             organizationLogInButton.Click();
+        }
+
+        public void ClickSignUpButton()
+        {
+            signUpLink.Click();
+        }
+
+        public String GetEmailText()
+        {
+            return passwordResetEmailInput.GetAttribute("value");
         }
 
         public bool IsLoginValid()
@@ -76,30 +91,33 @@ namespace HudlLoginAutomation.Pages
             return loginValidity;
         }
 
-        public void NavigateToPage()
+        public void ResetPassword(String email)
         {
-            driver.Navigate().GoToUrl(baseUrl + "/login");
+            EnterText(passwordResetEmailInput, email);
+            passwordResetButton.Click();
         }
 
-        public void ClickSignUpButton()
+        public void SignIn(String email, String password)
         {
-            signUpLink.Click();
+            EnterText(emailInput, email);
+            EnterText(passwordInput, password);
+            loginButton.Click();
         }
 
         #endregion
 
         #region Private Methods
 
-        private bool IsLoginButtonEnabled()
-        {
-            return loginButton.Enabled;
-        }
-
         private bool IsErrorDisplayed()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
             wait.Until(x => GetElementCount("CssSelector", "p[data-qa-id='error-display']") > 0);
             return errorDisplay.Displayed;
+        }
+
+        private bool IsLoginButtonEnabled()
+        {
+            return loginButton.Enabled;
         }
 
         #endregion
