@@ -1,6 +1,6 @@
 ﻿# HudlLoginAutomation
 
-Simple overview of use/purpose.
+A simple test automation suite for Phuoc's Hudl interview.
 
 ## Description
 
@@ -20,8 +20,7 @@ An in-depth paragraph about your project and overview of use.
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* dotnet test
 ```
 code blocks for commands
 ```
