@@ -25,7 +25,6 @@ namespace HudlLoginAutomation.Tests
 
         #endregion
 
-
         #region Setup
 
         [SetUp]
@@ -37,7 +36,6 @@ namespace HudlLoginAutomation.Tests
         }
 
         #endregion
-
 
         #region Tests
 
@@ -183,8 +181,18 @@ namespace HudlLoginAutomation.Tests
 
         */
 
-        #endregion
+        /* Tests around Remember Me functionality via cookie creation 
+         
+        public void RememberMeCookieSaved()
+        {
+            LoginPage loginPage = new LoginPage(driver);
 
+            loginPage.SignIn(email, "");
+            Cookie rememberMeCookie = driver.Manage().Cookies.GetCookieNamed("remember_token");
+        }
+        */
+
+        #endregion
 
         #region Teardown
 

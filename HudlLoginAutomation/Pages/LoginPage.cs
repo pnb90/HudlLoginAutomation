@@ -10,15 +10,14 @@ namespace HudlLoginAutomation.Pages
         IWebElement emailInput => driver.FindElement(By.Id("email"));
         IWebElement passwordInput => driver.FindElement(By.Id("password"));
         IWebElement loginButton => driver.FindElement(By.Id("logIn"));
-        IWebElement rememberMeCheckbox => driver.FindElement(By.Id("uniId_2"));
         IWebElement needHelpLink => driver.FindElement(By.CssSelector("a[data-qa-id='need-help-link']"));
         IWebElement signUpLink => driver.FindElement(By.CssSelector("a[href='/register/signup']"));
         IWebElement organizationLogInButton => driver.FindElement(By.CssSelector("button[data-qa-id='log-in-with-organization-btn']"));
         IWebElement errorDisplay => driver.FindElement(By.CssSelector("p[data-qa-id='error-display']"));
         IWebElement errorDisplayNeedHelpLink => errorDisplay.FindElement(By.CssSelector("a"));
-        IWebElement organizationalEmailInput => driver.FindElement(By.Id("uniId_1"));
         IWebElement passwordResetEmailInput => driver.FindElement(By.CssSelector("input[data-qa-id='password-reset-input']"));
         IWebElement passwordResetButton => driver.FindElement(By.CssSelector("button[data-qa-id='password-reset-submit-btn']"));
+        
         #endregion
 
         #region Constructor
