@@ -32,7 +32,7 @@ namespace HudlLoginAutomation.Tests
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://hudl.com/login");
+            driver.Navigate().GoToUrl(baseUrl + "/login");
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace HudlLoginAutomation.Tests
             homePage.NavigateToPage();
             homePage.ClickLogin();
 
-            Assert.That(driver.Url, Is.EqualTo("https://www.hudl.com/login"));
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/login"));
         }
 
         [Test]
@@ -146,7 +146,7 @@ namespace HudlLoginAutomation.Tests
             Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
         }
 
-        /* Reset Email Tests 
+        /* Reset Password Tests 
         [Test]
         public void UserAbleToResetPasswordWithValidEmail()
         {
@@ -182,7 +182,6 @@ namespace HudlLoginAutomation.Tests
         */
 
         /* Tests around Remember Me functionality via cookie creation 
-         
         public void RememberMeCookieSaved()
         {
             LoginPage loginPage = new LoginPage(driver);
