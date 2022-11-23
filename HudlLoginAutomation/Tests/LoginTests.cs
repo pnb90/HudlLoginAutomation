@@ -37,8 +37,59 @@ namespace HudlLoginAutomation.Tests
         {
             LoginPage loginPage = new LoginPage(driver);
             loginPage.SignIn(email, password);
-            Thread.Sleep(5);
+            Assert.IsTrue(true);
         }
+
+        /* No valid organization login for happy path testing 
+        public void ValidOrganizationLogin()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.SignIn(email, password);
+            Assert.IsTrue(true);
+        }
+        */
+
+        [Test]
+        public void InvalidEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.SignIn(email, password);
+            Assert.IsTrue(true);
+        }
+
+        public void InvalidPassword()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.SignIn(email, password);
+            Assert.IsTrue(true);
+        }
+
+        public void ResetPassword()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.SignIn(email, password);
+            Assert.IsTrue(true);
+        }
+
+
+        /* Test Cases for API Testing
+         
+        public void NullEmail()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.SignIn(email, password);
+            Assert.IsTrue(true);
+        }
+
+        public void NullPassword()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.SignIn(email, password);
+            Assert.IsTrue(true);
+        }
+
+        */
+
 
         #endregion
 
