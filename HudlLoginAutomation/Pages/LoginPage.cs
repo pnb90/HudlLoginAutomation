@@ -13,6 +13,8 @@ namespace HudlLoginAutomation.Pages
         IWebElement needHelpLink => driver.FindElement(By.CssSelector("a[data-qa-id='need-help-link']"));
         IWebElement signUpLink => driver.FindElement(By.CssSelector("a[href='/register/signup']"));
         IWebElement organizationLogInButton => driver.FindElement(By.CssSelector("button[data-qa-id='log-in-with-organization-btn']"));
+        IWebElement errorDisplay => driver.FindElement(By.CssSelector("p[data-qa-id='error-display']"));
+        IWebElement organizationalEmailInput => driver.FindElement(By.Id("uniId_1"));
         #endregion
 
         #region Constructor
@@ -28,6 +30,11 @@ namespace HudlLoginAutomation.Pages
             EnterText(emailInput, email);
             EnterText(passwordInput, password);
             loginButton.Click();
+        }
+
+        public void ClickOrganizationLogInButton()
+        {
+            organizationLogInButton.Click();
         }
 
         public bool IsLoginValid()
@@ -64,13 +71,19 @@ namespace HudlLoginAutomation.Pages
             return loginValidity;
         }
 
-
         public void NavigateToPage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/login");
         }
 
+        public void ClickSignUpButton()
+        {
+            signUpLink.Click();
+        }
+
         #endregion
+
+        #region Private Methods
 
         private bool IsLoginButtonEnabled()
         {
@@ -81,10 +94,9 @@ namespace HudlLoginAutomation.Pages
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
             wait.Until(x => GetElementCount("CssSelector", "p[data-qa-id='error-display']") > 0);
-
-            IWebElement errorDisplay = driver.FindElement(By.CssSelector("p[data-qa-id='error-display']"));
-
             return errorDisplay.Displayed;
         }
+
+        #endregion
     }
 }
