@@ -56,6 +56,7 @@ namespace HudlLoginAutomation.Pages
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
             wait.Until(x => initialUrl != GetCurrentUrl());
         }
+
         #endregion
 
         #region Private Methods

@@ -66,7 +66,7 @@ namespace HudlLoginAutomation.Tests
             Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
         }
 
-    
+
         /*
         public void ValidOrganizationLogin()
         {
