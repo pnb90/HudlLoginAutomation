@@ -46,6 +46,16 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
+        public void NavigateToOrganizationLogin()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.ClickOrganizationLogInButton();
+
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/app/auth/login/organization"));
+        }
+
+        [Test]
         public void ValidEmailAndPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
@@ -56,11 +66,12 @@ namespace HudlLoginAutomation.Tests
             Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
         }
 
-        /* No valid organization login for happy path testing 
+    
+        /*
         public void ValidOrganizationLogin()
         {
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.SignIn(email, password);
+            loginPage.OrganizationalSignIn(email);
             Assert.IsTrue(true);
         }
         */
@@ -107,6 +118,15 @@ namespace HudlLoginAutomation.Tests
             Assert.IsFalse(loginPage.IsLoginValid());
         }
 
+        [Test]
+        public void NavigateToSignUp()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+
+            loginPage.ClickSignUpButton();
+
+            Assert.That(driver.Url, Is.EqualTo(baseUrl + "/register/signup"));
+        }
         public void ResetPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
