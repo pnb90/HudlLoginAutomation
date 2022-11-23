@@ -4,58 +4,42 @@ A simple test automation suite for Phuoc's Hudl interview.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This test automation suite is written in C# and Selenium with NUnit. 
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* NUnit
+* Selenium.WebDriver
+* Selenium.WebDriver.ChromeDriver
+
+### TroubleShooting
+
+* Most common error is that the ChromeDriver included is out of date. If this occurs, then update the ChromeDriver to match the version running on your local machine. Learn more here: https://www.google.com/chrome/update/
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Contact a QA team member to get the appropriate .runsettings file.
 
 ### Executing program
 
-* dotnet test
-```
-code blocks for commands
-```
+* To run the test automation suite locally, run the following command in your terminal:
 
-## Help
-
-Any advise for common problems or issues.
 ```
-command to run if program contains helper info
+dotnet test
 ```
 
-## Authors
+* Alternatively, if you have Visual Studio already installed
+1. Open the solution locally.
+2. Clean the solution.
+3. Build the solution.
+4. Open Test -> Test Explorer
+5. Feel free to run/debug individually or as a group by either clicking the "Run All Tests in View" green arrow icon in the upper lefthand corner of the Test Explorer or by right-clicking the tests and selecting "Run" or "Debug."
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+### Future Steps 
+* implementing a reporting system to be able to quickly diagnose and resolve errors
+* implementing fake data for login probably by using Faker to avoid hardcoding personal emails and passwords
+* adding API testing to speed up testing especially for more minor and repetitive test cases (i.e. null emails, etc.)
+* mobile testing 
+* testing in most common browsers 
