@@ -24,10 +24,10 @@ This test automation suite is written in C# and Selenium with NUnit.
 
 ### Executing program
 
-* To run the test automation suite locally, run the following command in your terminal:
+* To run the test automation suite locally, navigate to the HudlLoginAutomation folder and run the following command in your terminal:
 
 ```
-dotnet test
+dotnet test --settings .runsettings
 ```
 
 * Alternatively, if you have Visual Studio already installed
@@ -43,3 +43,5 @@ dotnet test
 * adding API testing to speed up testing especially for more minor and repetitive test cases (i.e. null emails, etc.)
 * mobile testing 
 * testing in most common browsers 
+* remember me testing with cookies
+* better method of storing/obscuring sensitive data
