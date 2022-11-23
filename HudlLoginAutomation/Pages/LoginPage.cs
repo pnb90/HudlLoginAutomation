@@ -6,6 +6,7 @@ namespace HudlLoginAutomation.Pages
     internal class LoginPage : BasePage
     {
         #region Web Elements
+
         IWebElement emailInput => driver.FindElement(By.Id("email"));
         IWebElement passwordInput => driver.FindElement(By.Id("password"));
         IWebElement loginButton => driver.FindElement(By.Id("logIn"));
@@ -15,16 +16,20 @@ namespace HudlLoginAutomation.Pages
         IWebElement organizationLogInButton => driver.FindElement(By.CssSelector("button[data-qa-id='log-in-with-organization-btn']"));
         IWebElement errorDisplay => driver.FindElement(By.CssSelector("p[data-qa-id='error-display']"));
         IWebElement organizationalEmailInput => driver.FindElement(By.Id("uniId_1"));
+        
         #endregion
 
         #region Constructor
+
         public LoginPage(IWebDriver driver) : base(driver)
         {
             this.driver = driver;
         }
+        
         #endregion
 
         #region Public Methods 
+
         public void SignIn(String email, String password)
         {
             EnterText(emailInput, email);

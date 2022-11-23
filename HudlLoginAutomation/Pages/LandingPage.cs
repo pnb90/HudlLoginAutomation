@@ -5,6 +5,7 @@ namespace HudlLoginAutomation.Pages
     internal class LandingPage : BasePage
     {
         #region Web Elements
+
         IWebElement homeLink => driver.FindElement(By.CssSelector("a[data-qa-id='webnav-globalnav-home']"));
         IWebElement exploreLink => driver.FindElement(By.CssSelector("a[data-qa-id='webnav-globalnav-explore']"));
         IWebElement uploadLink => driver.FindElement(By.CssSelector("a[data-qa-id='webnav-globalnav-upload']"));
@@ -14,10 +15,12 @@ namespace HudlLoginAutomation.Pages
         #endregion
 
         #region Constructor
+
         public LandingPage(IWebDriver driver) : base(driver)
         {
             this.driver = driver;
         }
+
         #endregion
 
     }

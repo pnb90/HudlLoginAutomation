@@ -14,6 +14,7 @@ namespace HudlLoginAutomation.Pages
         {
             this.driver = driver;
         }
+
         #endregion
 
         #region Public Methods

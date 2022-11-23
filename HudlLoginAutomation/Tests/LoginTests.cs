@@ -8,21 +8,26 @@ namespace HudlLoginAutomation.Tests
     internal class LoginTests
     {
         #region Member Variables
+
         IWebDriver driver;
         String email = TestContext.Parameters.Get("email");
         String password = TestContext.Parameters.Get("password");
         String baseUrl = TestContext.Parameters.Get("baseUrl");
+
         #endregion
 
         #region Constructor
+
         public LoginTests()
         {
             LoginPage loginPage = new LoginPage(driver);
         }
+
         #endregion
 
 
         #region Setup
+
         [SetUp]
         public void SetUp()
         {
@@ -30,10 +35,12 @@ namespace HudlLoginAutomation.Tests
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://hudl.com/login");
         }
+
         #endregion
 
 
         #region Tests
+
         [Test]
         public void NavigateToLogin()
         {
@@ -140,11 +147,13 @@ namespace HudlLoginAutomation.Tests
 
 
         #region Teardown
+
         [TearDown]
         public void TearDown()
         {
             driver.Quit();
         }
+
         #endregion
     }
 }

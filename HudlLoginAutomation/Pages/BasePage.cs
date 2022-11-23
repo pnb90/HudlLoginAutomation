@@ -7,6 +7,7 @@ namespace HudlLoginAutomation.Pages
     public class BasePage
     {
         #region Member Variables
+
         public IWebDriver driver { get; set; }
         public String baseUrl = TestContext.Parameters.Get("baseUrl");
 
@@ -21,6 +22,7 @@ namespace HudlLoginAutomation.Pages
         #endregion
 
         #region Public Methods
+
         public void EnterText(IWebElement element, String text)
         {
             try
@@ -65,6 +67,7 @@ namespace HudlLoginAutomation.Pages
         {
             return driver.Url;
         }
+
         #endregion
     }
 }
