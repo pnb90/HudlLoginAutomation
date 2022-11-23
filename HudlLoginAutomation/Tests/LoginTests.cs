@@ -72,7 +72,7 @@ namespace HudlLoginAutomation.Tests
 
             loginPage.SignIn("invalidEmail", password);
 
-            Assert.IsFalse(loginPage.isLoginValid());
+            Assert.IsFalse(loginPage.IsLoginValid());
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace HudlLoginAutomation.Tests
 
             loginPage.SignIn(email, "invalidPassword");
 
-            Assert.IsFalse(loginPage.isLoginValid());
+            Assert.IsFalse(loginPage.IsLoginValid());
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace HudlLoginAutomation.Tests
 
             loginPage.SignIn("", password);
 
-            Assert.IsFalse(loginPage.isLoginValid());
+            Assert.IsFalse(loginPage.IsLoginValid());
         }
 
         [Test]
@@ -104,7 +104,7 @@ namespace HudlLoginAutomation.Tests
 
             loginPage.SignIn(email, "");
 
-            Assert.IsFalse(loginPage.isLoginValid());
+            Assert.IsFalse(loginPage.IsLoginValid());
         }
 
         public void ResetPassword()
