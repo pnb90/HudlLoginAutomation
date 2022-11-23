@@ -1,12 +1,6 @@
-﻿using OpenQA.Selenium.Support.UI;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using OpenQA.Selenium.Support.UI;
 
 namespace HudlLoginAutomation.Pages
 {
@@ -33,7 +27,8 @@ namespace HudlLoginAutomation.Pages
             {
                 element.Clear();
                 element.SendKeys(text);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Could not enter text: " + ex.Message);
             }

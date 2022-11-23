@@ -50,7 +50,8 @@ namespace HudlLoginAutomation.Pages
                     throw new Exception("Login is not quite right.");
                 }
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 //Would generally log a message to a report.
 

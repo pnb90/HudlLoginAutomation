@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
+﻿using HudlLoginAutomation.Pages;
 using NUnit.Framework;
-using HudlLoginAutomation.Pages;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace HudlLoginAutomation.Tests
 {
