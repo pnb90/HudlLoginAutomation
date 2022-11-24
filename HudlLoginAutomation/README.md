@@ -50,3 +50,5 @@ dotnet test --settings .runsettings
 * Add parallel testing to cut down on time, especially with parallel browsers. 
 * Remember Me testing with cookies
 * Better/more secure method of storing/obscuring sensitive data
+* Organizational login tests for random sampling of organizations or generated organization.
+* Reset password functionality validating an API call being made successfully
