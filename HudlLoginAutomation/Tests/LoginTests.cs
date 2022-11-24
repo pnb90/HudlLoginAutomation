@@ -40,7 +40,7 @@ namespace HudlLoginAutomation.Tests
         #region Tests
 
         [Test]
-        public void InvalidEmail()
+        public void FailedLoginTestInvalidEmail()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -50,7 +50,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void InvalidPassword()
+        public void FailedLoginTestInvalidPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -60,7 +60,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NavigateToLogin()
+        public void NavigateToLoginTest()
         {
             HomePage homePage = new HomePage(driver);
 
@@ -71,7 +71,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NavigateToOrganizationLogin()
+        public void NavigateToOrganizationLoginTest()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -81,7 +81,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NavigateToPasswordReset()
+        public void NavigateToPasswordResetTest()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -91,7 +91,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NavigateToPasswordResetInvalidEmail()
+        public void NavigateToPasswordResetInvalidEmailTest()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -106,7 +106,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NavigateToSignUp()
+        public void NavigateToSignUpTest()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -116,7 +116,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NullEmail()
+        public void FailedLoginTestNullEmail()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -126,7 +126,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void NullPassword()
+        public void FailedLoginTestNullPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
 
@@ -136,7 +136,7 @@ namespace HudlLoginAutomation.Tests
         }
 
         [Test]
-        public void ValidEmailAndPassword()
+        public void SuccessfulLoginValidEmailAndPassword()
         {
             LoginPage loginPage = new LoginPage(driver);
 
