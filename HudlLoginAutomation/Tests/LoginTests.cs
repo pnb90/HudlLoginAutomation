@@ -146,51 +146,6 @@ namespace HudlLoginAutomation.Tests
             Assert.That(driver.Url, Is.EqualTo(baseUrl + "/home"));
         }
 
-        /* Reset Password Tests 
-        [Test]
-        public void UserAbleToResetPasswordWithValidEmail()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.ClickNeedHelpButton();
-            loginPage.ResetPassword("anything@test.com");
-
-            Assert.isTrue(loginPage.IsConfirmationTextPresent());
-            
-            // better yet is checking the API has been hit to send out a password reset email.
-        }
-
-        [Test]
-        public void UserNotAbleToResetPasswordWithInvalidEmail()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.ClickNeedHelpButton();
-            loginPage.ResetPassword("invalid");
-
-            Assert.isTrue(loginPage.IsPasswordResetErrorDisplayPresent());
-        }
-        */
-
-        /* Would need tests for organizational login but no valid test data at the moment
-
-        public void ValidOrganizationLogin()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.OrganizationalSignIn(email);
-            Assert.IsTrue(true);
-        }
-
-        */
-
-        /* Tests around Remember Me functionality via cookie creation 
-        public void RememberMeCookieSaved()
-        {
-            LoginPage loginPage = new LoginPage(driver);
-
-            loginPage.SignIn(email, "");
-            Cookie rememberMeCookie = driver.Manage().Cookies.GetCookieNamed("remember_token");
-        }
-        */
-
         #endregion
 
         #region Teardown
